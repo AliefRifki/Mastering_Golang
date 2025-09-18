@@ -73,5 +73,19 @@ func main() {
 	fmt.Println(kalimat)
 
 	var pointerNew = new(string) // zero value dalam pointer bisa saja aman jika kita menggunakan metode new() dan zero value nya akan berisi sesuai dari tipe data yang di assign, misal new(string) maka zero value nya adalah "", jika new(int) zero valuenya adalah 0 dst.
-	fmt.Printf("%v", pointerNew)
+	fmt.Printf("%v\n", pointerNew)
+
+	// Operator
+	var nilai = 5 / 2
+	fmt.Println(nilai) // hasilnya akan dibulatkan
+
+	var modNilai = 5 % 2
+	fmt.Println(modNilai) // Modulus (%) akan menampilkan sisa bagi jadi 5/2 memiliki sisa 1 maka hasilnya akan 1
+
+	var x = 5
+	var y = 5
+	x++
+	y--
+	fmt.Println("Incremet & Decrement x = 5 x-- =", x, "y = 5 y-- =", y)
+
 }
