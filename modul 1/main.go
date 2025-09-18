@@ -3,6 +3,10 @@ package main
 import "fmt"
 
 const word = "Hello Dunia" // isi data tidak bisa di ubah
+const (
+	JENIS_KELAMIN_LAKI      = "Laki-Laki"
+	JENIS_KELAMIN_PEREMPUAN = "Perempuan"
+) // constant hanya bisa digunakan dengan tipe dasar
 
 func main() {
 	var l bool = true // var [nama] tipedata
@@ -55,4 +59,19 @@ func main() {
 	fmt.Println(word)
 	const lel = 404
 	fmt.Println(lel)
+
+	fmt.Println(JENIS_KELAMIN_LAKI)
+	fmt.Println(JENIS_KELAMIN_PEREMPUAN)
+
+	// Pointer
+	var kalimat = "Hello World"
+	var pointerSaya *string = &kalimat // zero value dari pointer itu nil, dan nil bisa membuat panic dalam bahasa golang (program berhenti karena ada nya error)
+
+	*pointerSaya = "Programming golang"
+
+	fmt.Println(*pointerSaya)
+	fmt.Println(kalimat)
+
+	var pointerNew = new(string) // zero value dalam pointer bisa saja aman jika kita menggunakan metode new() dan zero value nya akan berisi sesuai dari tipe data yang di assign, misal new(string) maka zero value nya adalah "", jika new(int) zero valuenya adalah 0 dst.
+	fmt.Printf("%v", pointerNew)
 }
