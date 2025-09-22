@@ -88,4 +88,60 @@ func main() {
 	y--
 	fmt.Println("Incremet & Decrement x = 5 x-- =", x, "y = 5 y-- =", y)
 
+	var tambah = 5
+	tambah += 2
+	fmt.Println(tambah)
+
+	// || akan true jika salah satu variable nya true
+	// && hanya akan true jika kedua variable true
+	var passwordBenar = true
+	var usernamebenar = true
+	fmt.Println(passwordBenar && usernamebenar)
+	cetakHello()
+	cetakAngka(69)
+	var hi = hasilkanHello()
+	fmt.Println(hi)
+	var namae = greatUser("Alief")
+	fmt.Println(namae)
+
+	fmt.Println("Function 2 parameter & 2 output:")
+	var hasilKali, hasilBagi = kaliBagi(10, 5)
+	fmt.Printf("Hasil kali:  %d, Hasil bagi: %d \n", hasilKali, hasilBagi)
+
+	// _ akan menjadi seperti escape sequence ketika kita tidak membutuhkan nya (dalam konteks ini)
+	var hasilKali2, _ = kaliBagi(20, 10)
+	fmt.Printf("Hasil: %d \n", hasilKali2)
+
+	var o = kuadratLima()
+	fmt.Printf("Hasil, %d", o)
+}
+
+// init akan otomatis jalan meskipun tidak di panggil, dia akan berjalan terlebih dahulu sebelum isi main meskipun ditaruh di bagian setelah main
+func init() {
+	fmt.Println("Hello From Init Niggas!")
+}
+
+func cetakHello() {
+	fmt.Println("Kamu telah memanggil function cetakHello: Hello World!")
+}
+
+func cetakAngka(n int) {
+	fmt.Println("Angka:", n)
+}
+
+func hasilkanHello() string {
+	return "Hello Dumbass"
+}
+
+func greatUser(x string) string {
+	return fmt.Sprintf("Hello, %s", x)
+}
+
+func kaliBagi(x int, y int) (int, int) {
+	return x * y, x / y
+}
+
+func kuadratLima() (hasil int) {
+	hasil = 5 * 5
+	return
 }
