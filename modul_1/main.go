@@ -114,6 +114,19 @@ func main() {
 
 	var o = kuadratLima()
 	fmt.Printf("Hasil, %d", o)
+
+	var klub = "Liverpool"
+	fmt.Println("\n Klub kamu : ")
+	switch klub {
+	case "Liverpool":
+		fmt.Println("CHAMPION")
+	case "Chelsea":
+		fmt.Println("Cheleng")
+	case "Madrid":
+		fmt.Println("Demit")
+	default:
+		fmt.Println("Karbit")
+	}
 }
 
 // init akan otomatis jalan meskipun tidak di panggil, dia akan berjalan terlebih dahulu sebelum isi main meskipun ditaruh di bagian setelah main
