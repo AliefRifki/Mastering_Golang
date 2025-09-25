@@ -113,6 +113,7 @@ func main() {
 	fmt.Printf("Hasil: %d \n", hasilKali2)
 
 	var o = kuadratLima()
+<<<<<<< HEAD
 	fmt.Printf("Hasil, %d", o)
 
 	var klub = "Liverpool"
@@ -127,6 +128,15 @@ func main() {
 	default:
 		fmt.Println("Karbit")
 	}
+=======
+	fmt.Printf("Hasil, %d \n", o)
+
+	cetakSemua("hello", "my", "Niggers")
+
+	var hasilTotal = total(1, 2, 5, 10)
+
+	fmt.Println(hasilTotal)
+>>>>>>> ed1d240 (New File to learn further)
 }
 
 // init akan otomatis jalan meskipun tidak di panggil, dia akan berjalan terlebih dahulu sebelum isi main meskipun ditaruh di bagian setelah main
@@ -157,4 +167,18 @@ func kaliBagi(x int, y int) (int, int) {
 func kuadratLima() (hasil int) {
 	hasil = 5 * 5
 	return
+}
+
+// variadic parameter jadi kita bisa melempar berapa banyak data yg kita mau ke fungsi
+func cetakSemua(kata ...string) {
+	fmt.Println(kata)
+}
+
+func total(x int, y int, angka ...int) int {
+	hasilHasil := x + y
+	for _, n := range angka {
+		hasilHasil += n
+	}
+
+	return hasilHasil
 }
