@@ -113,7 +113,6 @@ func main() {
 	fmt.Printf("Hasil: %d \n", hasilKali2)
 
 	var o = kuadratLima()
-<<<<<<< HEAD
 	fmt.Printf("Hasil, %d", o)
 
 	var klub = "Liverpool"
@@ -128,7 +127,6 @@ func main() {
 	default:
 		fmt.Println("Karbit")
 	}
-=======
 	fmt.Printf("Hasil, %d \n", o)
 
 	cetakSemua("hello", "my", "Niggers")
@@ -136,7 +134,6 @@ func main() {
 	var hasilTotal = total(1, 2, 5, 10)
 
 	fmt.Println(hasilTotal)
->>>>>>> ed1d240 (New File to learn further)
 }
 
 // init akan otomatis jalan meskipun tidak di panggil, dia akan berjalan terlebih dahulu sebelum isi main meskipun ditaruh di bagian setelah main
