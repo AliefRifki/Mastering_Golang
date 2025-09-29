@@ -184,7 +184,85 @@ func main() {
 	fmt.Println(len(kolor))
 	fmt.Println(cap(kolor))
 
-	color = append(color, "Biru", "Putih", "Kuning")
+	color = append(color, "Biru", "Putih", "Hitam")
 
 	fmt.Println(color)
+
+	color = color[0:2] // [index awal: index akhir] jadi [0:2] 0 sampai 2, namun memotong slice artinya sebelum index akhir nya jadi hanya akan didapat 0,1 dan 2 nya tidak ikut
+	fmt.Println(color)
+
+	var name = [3]string{"Alice", "Bob", "Charles"}
+	var namaSlice = name[:] // mengubah array menjadi slice, lalu jika nantinya isi slice diubah maka isi array juka akan terubah
+
+	fmt.Println("kapasitas awal", cap(namaSlice))
+
+	namaSlice[2] = "Alief"
+
+	// jika melakukan perubahan nilai menggunakan append maka hanya isi slice yang terpengaruh sedangkan array tidak, hal ini dinamakan realokasi
+	namaSlice = append(namaSlice, "Albert")
+
+	fmt.Println("Slice", namaSlice)
+	fmt.Println("array", name)
+	fmt.Println("Kapasitas akhir", cap(namaSlice))
+	// isi index ke 2 dari array dan slice akan sama sama berisi Alief karena ada perubahan pada "namaSlice" menggunakan indexing
+
+	// Peningkatan panjang & kapasitas slice
+	fmt.Println("\nPeningkatan panjang & Kapasitas slice")
+	var pokemon = []string{}
+
+	fmt.Println("Panjang", len(pokemon))
+	fmt.Println("Kapasitas", cap(pokemon))
+
+	fmt.Println("Tambah Pikachu")
+	pokemon = append(pokemon, "Pikachu")
+
+	fmt.Println("Panjang", len(pokemon))
+	fmt.Println("Kapasitas", cap(pokemon))
+
+	fmt.Println("Tambah Gengar")
+	pokemon = append(pokemon, "Gengar")
+
+	fmt.Println("Panjang", len(pokemon))
+	fmt.Println("Kapasitas", cap(pokemon))
+
+	fmt.Println("Tambah Greninja")
+	pokemon = append(pokemon, "Greninja")
+
+	fmt.Println("Panjang", len(pokemon))
+	fmt.Println("Kapasitas", cap(pokemon))
+
+	// kesimpulannya adalah kapasitas akan bertambah 2x lipat jika sudah melebihi batas kapasitasnya
+
+	// tapi hal ini tidak edial dalam konteks efisiensi memori, maka dari itu lebih bijak jika kita menentukan kapasitas dari awal membuat slice itu sendiri
+
+	// MAP
+	fmt.Println("\nMap")
+	var hobi map[string]string = map[string]string{"Alief": "Dota"} // cara pertama membuat map
+	fmt.Println(hobi)
+
+	var hobiMake map[string]string = make(map[string]string)
+	hobiMake["Alip"] = "Kopi"
+	hobiMake["Vina"] = "Tiktok"
+	// zero value map itu nil maka dari itu lebih baik menggunakan make pada saat pembuatan map atau bisa juga langsung diinisiasikan agar tidak nil
+
+	// value map itu case sensitive
+	// if nilai hobi vina -> true maka turun ke yang pertama -> hobi vina blbablaa, namun jika hobi vina false / tidak ada di map maka dia akan turun ke else
+	fmt.Println("Mengecek isi map menggunakan if")
+	if nilai, ada := hobiMake["Vina"]; ada {
+		fmt.Println("Hobi Vina adalah", nilai)
+	} else {
+		fmt.Println("Hobi Vina tidak tercatat dalam map")
+	}
+
+	// menggunakan range mirip seperti array bedanya kunci yang dipakai disini bukanlah index, tapi key value dari map itu sendiri
+	fmt.Println("\nMengecek isi map menggunakan range")
+	for kunci, nilai := range hobiMake {
+		fmt.Printf("Hobi %s adalah %s\n", kunci, nilai)
+	}
+
+	// jika struct menggunakan huruf kapital diawalnya maka dia bisa diakses di package yang berbeda, namun jika penamaan field nya tidak menggunakan kapital diawal maka fiel tersebut tidak bisa diakses dari package yang berbeda
+	type BangunRuang struct {
+		panjang int
+		lebar   int // panjang & lebar tidak bisa diakses dari package yg berberda karena tidak menggunakan kapital di depan nya
+	}
 }
