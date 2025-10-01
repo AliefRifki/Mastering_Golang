@@ -7,6 +7,28 @@ import (
 
 var errorNol error = errors.New("tidak bisa membagi dengan nol")
 
+// embedded struct
+type Geometri struct {
+	luas     int
+	keliling int
+}
+
+// jika struct menggunakan huruf kapital diawalnya maka dia bisa diakses di package yang berbeda, namun jika penamaan field nya tidak menggunakan kapital diawal maka fiel tersebut tidak bisa diakses dari package yang berbeda
+type BangunRuang struct {
+	Geometri
+	panjang int
+	lebar   int // panjang & lebar tidak bisa diakses dari package yg berberda karena tidak menggunakan kapital di depan nya
+}
+
+func (b BangunRuang) hitungLuas() int {
+	return b.panjang * b.lebar
+}
+
+// Ini adalah fungsi dengan pointer receiver, fungsi ini bisa mengubah nilai yang disimpan didalam struct
+func (b *BangunRuang) aturPanjang(p int) {
+	b.panjang = p
+}
+
 // anonymous function,  fungsi yang di masukkan ke dalam variabel
 var cetakHello = func() {
 	fmt.Println("Hello World")
@@ -260,9 +282,41 @@ func main() {
 		fmt.Printf("Hobi %s adalah %s\n", kunci, nilai)
 	}
 
-	// jika struct menggunakan huruf kapital diawalnya maka dia bisa diakses di package yang berbeda, namun jika penamaan field nya tidak menggunakan kapital diawal maka fiel tersebut tidak bisa diakses dari package yang berbeda
-	type BangunRuang struct {
-		panjang int
-		lebar   int // panjang & lebar tidak bisa diakses dari package yg berberda karena tidak menggunakan kapital di depan nya
+	fmt.Println("\nStruct")
+	var persegi = BangunRuang{
+		panjang: 5,
+		lebar:   10,
+		Geometri: Geometri{
+			luas:     50,
+			keliling: 0,
+		},
 	}
+	fmt.Println(persegi.luas)
+
+	// Jika isi struct di deklarasikan maka akan ada zero value dan akan tetap bisa berjalan
+	persegiPanjang := BangunRuang{panjang: 5}
+	fmt.Println(persegiPanjang)
+
+	// var hasil = persegiPanjang.luas()
+	// fmt.Println(hasil)
+	fmt.Println(persegi.hitungLuas())
+
+	fmt.Println("\nPointer Receiver Struct")
+	persegi.aturPanjang(10)
+	fmt.Println(persegi.panjang)
+	// nilai panjang dari persegi akan terubah karena menggunkan pointer receiver, oleh karena itu jika kita butuh untuk mengubah nilai struct kita gunakan pointer receiver
+
+	// persegiPointer := &BangunRuang{5, 10}
+	// fmt.Println((*persegiPointer).panjang)
+
+	// anonymous struct
+	var persegiStruct = struct {
+		panjang int
+		lebar   int
+	}{
+		panjang: 10,
+		lebar:   10,
+	}
+
+	fmt.Println(persegiStruct)
 }
