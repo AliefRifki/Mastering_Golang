@@ -7,6 +7,36 @@ import (
 
 var errorNol error = errors.New("tidak bisa membagi dengan nol")
 
+type BangunRuangI interface {
+	luas() float64
+}
+
+type Lingkaran struct {
+	diameter float64
+}
+
+type Persegi struct {
+	sisi float64
+}
+
+type Segitiga struct {
+	tinggi float64
+	alas   float64
+}
+
+func (I Lingkaran) luas() float64 {
+	r := 0.5 * I.diameter
+	return 3.14 * r * r
+}
+
+func (s Segitiga) luas() float64 {
+	return 0.5 * s.alas * s.tinggi
+}
+
+func (p Persegi) luas() float64 {
+	return p.sisi * p.sisi
+}
+
 // embedded struct
 type Geometri struct {
 	luas     int
@@ -319,4 +349,5 @@ func main() {
 	}
 
 	fmt.Println(persegiStruct)
+
 }
