@@ -10,14 +10,15 @@ import (
 
 // struct dengan json struct tag
 type FactResponse struct {
-	Teks string `json:"text"`
-	Tipe string `json:"type"`
+	Tipe  string `json:"type"`
+	Setup string `json:"setup"`
+	Jokes string `json:"delivery"`
 }
 
 func main() {
 	// HTTP request mengembalikan request dan error
 	// 1. Buat Request
-	req, err := http.NewRequest("GET", "https://cat-fact.herokuapp.com/facts/random", nil)
+	req, err := http.NewRequest("GET", "https://v2.jokeapi.dev/joke/Programming?type=twopart", nil)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(0)
@@ -50,7 +51,8 @@ func main() {
 		os.Exit(0)
 	}
 
-	fmt.Println("Text", factResponse.Teks)
-	fmt.Println("Tipe", factResponse.Tipe)
+	fmt.Println("Tipe:", factResponse.Tipe)
+	fmt.Println("Setup:", factResponse.Setup)
+	fmt.Println("Punchline:", factResponse.Jokes)
 
 }
